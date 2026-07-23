@@ -24,6 +24,7 @@ async function renderList() {
   const list = document.querySelector(".article-list");
   const lang = getLang();
   if (!list) return;
+  if (list.children.length > 0 && getLang() === "cs") return;
   try {
     const res = await fetch("/api/articles");
     const articles = await res.json();

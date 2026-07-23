@@ -27,7 +27,7 @@ function initHeader() {
       localStorage.setItem("lang", lang);
       updateLanguage();
       if (typeof renderList === "function") renderList();
-      if (typeof renderDetail === "function") renderDetail();
+      if (typeof renderArticle === "function") renderArticle();
     });
   });
   hamburger.addEventListener("click", () => {
