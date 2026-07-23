@@ -10,7 +10,7 @@ async function uploadFile(file) {
   const formData = new FormData();
   formData.append("img", file);
   try {
-    const res = await fetch("/api/upload", {
+    const res = await fetch("/api/images/upload", {
       method: "POST",
       body: formData,
     });
