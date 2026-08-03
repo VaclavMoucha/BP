@@ -27,4 +27,5 @@ app.use(
 app.use("/api/articles", articlesRouter);
 app.use("/", pagesRouter);
 app.use("/api", authRouter);
+app.use("/api/images", require("./routes/images"));
 module.exports = app;

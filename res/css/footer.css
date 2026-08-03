@@ -14,31 +14,36 @@
   padding: 0;
   margin: 0;
 }
+.footer-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0 auto;
+  max-width: var(--page-size);
+}
 .footer-content {
   flex: 1;
   margin-right: auto;
 }
 
 .second-footer-content {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  margin-left: auto;
+}
+.contact-grid {
+  display: inline-grid;   
+  grid-template-columns: auto auto;  
+  text-align: left;
+  
 }
 
-.second-footer-content svg {
-  height: var(--logo-large-size);
-  width: auto;
-  flex-shrink: 0;
+.contact-label {
+  color: var(--text-color);
+  font-size: inherit;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-.footer-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  margin: 0 auto;
-  max-width: var(--page-size);
-}
 @media (max-width: 900px) {
   .footer-content {
     margin-left: var(--page-margin);
