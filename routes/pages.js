@@ -123,4 +123,7 @@ router.get("/article/:id", async (req, res) => {
     res.status(500).send("Chyba serveru");
   }
 });
+router.use((req, res) => {
+  res.status(404).send(renderPage("404.html"));
+});
 module.exports = router;

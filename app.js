@@ -1,11 +1,27 @@
+/** 
+ * @file app.js
+ * @description Hlavní soubor aplikace, který nastavuje middleware a směruje požadavky na různé routery.
+ * @requires express
+ * @requires cors
+ * @requires path
+ * @requires express-session
+ * @requires mongoose
+ * @requires ./routes/articles
+ * @requires ./routes/auth
+ * @requires ./routes/images
+ * @requires ./routes/pages
+ * pagesRouter musí být přidán na konec, aby se zabránilo konfliktům s ostatními routami.
+*/
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const articlesRouter = require("./routes/articles");
-const pagesRouter = require("./routes/pages");
 const authRouter = require("./routes/auth");
+const imagesRouter = require("./routes/images");
+const pagesRouter = require("./routes/pages");
+
 const app = express();
 
 mongoose
@@ -25,7 +41,8 @@ app.use(
 );
 
 app.use("/api/articles", articlesRouter);
-app.use("/", pagesRouter);
+
 app.use("/api", authRouter);
-app.use("/api/images", require("./routes/images"));
+app.use("/api/images", imagesRouter);
+app.use("/", pagesRouter);
 module.exports = app;
