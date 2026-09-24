@@ -13,7 +13,7 @@ function renderBlocksClient(blocks, fallback) {
         if (block.type === "text")
           return `<p class ="article-block-text">${block.content}</p>`;
         if (block.type === "image")
-          return `<img class="article-block-image" src="${block.content}" alt="Obrázek">`;
+          return `<img class="article-block-image" src="${block.content}" alt="Obrázek" loading="lazy">  `;
         return "";
       })
       .join("");
@@ -32,7 +32,7 @@ async function renderList() {
       .map(
         (article) => `
       <a href="/article/${article._id}" class="article-card">
-        <img src="${article.img || "/img/placeholder.jpg"}" alt="${article["title_" + lang]}" />
+        <img src="${article.img || "/img/placeholder.jpg"}" alt="${article["title_" + lang]}" loading="lazy" />
         <div class="article-info">
           <h2 data-cs="${article.title_cs}" data-en="${article.title_en}">${article["title_" + lang]}</h2>
           <span class="article-date">${formatDate(article.date)}</span>

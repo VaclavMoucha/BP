@@ -4,13 +4,17 @@ const multer = require("multer");
 const requireAdmin = require("../middleware/requireAdmin");
 const upload = multer({ storage: multer.memoryStorage() });
 const Image = require("../models/Image");
+const sharp = require("sharp");
 
 router.post("/upload", requireAdmin, upload.single("img"), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: "Žádný soubor" });
-
+ const resizedBuffer = await sharp(req.file.buffer)
+  .resize({ width: 1200, withoutEnlargement: true })
+  .webp({ quality: 80 })
+  .toBuffer();
   const image = await Image.create({
-    data: req.file.buffer,
-    contentType: req.file.mimetype,
+    data: resizedBuffer,
+    contentType: "image/webp",
   });
 
   const url = "/api/images/" + image._id;

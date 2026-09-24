@@ -23,6 +23,11 @@
   --page-size: 1300px;
   --index-image-height:35vw;
 }
+#header,
+#footer {
+  position: relative; 
+  z-index: 200;      
+}
 html,
 body,
 #root {
@@ -96,7 +101,49 @@ a {
   max-width: 480px;
   line-height: 1.7;
 }
+/*PreLoader*/
 
+.preloader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh; 
+  background-color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+.preloader-img {
+  width: 90px;
+  height: auto;
+  animation: pulseLogo 1.2s infinite ease-in-out;
+}
+
+
+@keyframes pulseLogo {
+  0% {
+    opacity: 0.25;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 0.25;
+    transform: scale(0.92);
+  }
+}
 /*Article*/
 .article-wrapper {
   max-width: 800px;
