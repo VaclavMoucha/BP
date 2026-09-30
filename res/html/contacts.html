@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LBSE</title>
+    <title>Kontakty – LBSE</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/contacts.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" href="../img/favicon.png" />
@@ -25,69 +26,107 @@
       <img src="../img/logo.svg" alt="Načítání LBSE" class="preloader-img" />
     </div>
     <header id="header"></header>
+
     <div class="container">
       <div class="page-wrapper">
         <div class="main">
           <section class="contacts">
+            <!-- Mapa -->
             <div class="contacts-location">
               <h2 data-en="Where to find us" data-cs="Kde nás najdete">
                 Kde nás najdete
               </h2>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1305.313772127901!2d15.07545363573841!3d50.774004802144105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709341bbda32cbd%3A0xbca06f703faa2e6d!2sCXI%20-%20%C3%9Astav%20pro%20nanomateri%C3%A1ly%2C%20pokro%C4%8Dil%C3%A9%20technologie%20a%20inovace%20TUL%20-%20budova%20L!5e1!3m2!1scs!2scz!4v1771790552474!5m2!1scs!2scz"
-                allowfullscreen=""
-                loading="lazy"
+              <div class="map-frame">
+                <iframe
+                  title="Mapa – CXI, budova L, Technická univerzita v Liberci"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1305.313772127901!2d15.07545363573841!3d50.774004802144105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709341bbda32cbd%3A0xbca06f703faa2e6d!2sCXI%20-%20%C3%9Astav%20pro%20nanomateri%C3%A1ly%2C%20pokro%C4%8Dil%C3%A9%20technologie%20a%20inovace%20TUL%20-%20budova%20L!5e1!3m2!1scs!2scz!4v1771790552474!5m2!1scs!2scz"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+              <a
+                class="map-link"
+                href="https://www.google.com/maps/search/?api=1&query=Bendlova+1409/7+Liberec"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-en="Open in Google Maps"
+                data-cs="Otevřít v Mapách Google"
+                >Otevřít v Mapách Google</a
               >
-              </iframe>
             </div>
 
+            <!-- Kontakty -->
             <div class="contacts-list">
               <h2 data-en="Contacts" data-cs="Kontakty">Kontakty</h2>
 
-              <div class="contact-card">
-                <div class="contact-icon">📍</div>
-                <div class="contact-info">
-                  <span class="contact-label" data-en="Address" data-cs="Adresa"
-                    >Adresa</span
-                  >
-                  <span class="contact-value"
-                    >Bendlova 1409/7 – budova L <br />460 01 Liberec 1</span
-                  >
-                </div>
-              </div>
+              <div class="contact-cards">
+                <!-- Adresa -->
+                <a
+                  class="contact-card"
+                  href="https://www.google.com/maps/search/?api=1&query=Bendlova+1409/7+Liberec"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </span>
+                  <span class="contact-info">
+                    <span class="contact-label" data-en="Address" data-cs="Adresa"
+                      >Adresa</span
+                    >
+                    <span class="contact-value"
+                      >Bendlova 1409/7 – budova L<br />460 01 Liberec 1</span
+                    >
+                  </span>
+                </a>
 
-              <div class="contact-card">
-                <div class="contact-icon">📞</div>
-                <div class="contact-info">
-                  <span class="contact-label" data-en="Phone" data-cs="Telefon"
-                    >Telefon</span
-                  >
-                  <span class="contact-value">+420 485 351 111</span>
-                </div>
-              </div>
+                <!-- Telefon -->
+                <a class="contact-card" href="tel:+420485351111">
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="contact-info">
+                    <span class="contact-label" data-en="Phone" data-cs="Telefon"
+                      >Telefon</span
+                    >
+                    <span class="contact-value">+420 485 351 111</span>
+                  </span>
+                </a>
 
-              <div class="contact-card">
-                <div class="contact-icon">✉️</div>
-                <div class="contact-info">
-                  <span class="contact-label" data-en="E-mail" data-cs="E-mail"
-                    >E-mail</span
-                  >
-                  <span class="contact-value"><a href="mailto:pavel.jandura@tul.cz">pavel.jandura@tul.cz</a></span>
-                </div>
+                <!-- E-mail -->
+                <a class="contact-card" href="mailto:pavel.jandura@tul.cz">
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                      <path d="m22 7-10 6L2 7" />
+                    </svg>
+                  </span>
+                  <span class="contact-info">
+                    <span class="contact-label" data-en="E-mail" data-cs="E-mail"
+                      >E-mail</span
+                    >
+                    <span class="contact-value">pavel.jandura@tul.cz</span>
+                  </span>
+                </a>
               </div>
-                </div>
-              </a>
             </div>
           </section>
         </div>
       </div>
     </div>
+
     <footer id="footer"></footer>
 
     <script src="/js/articles.js"></script>
     <script src="/js/header.js"></script>
     <script src="/js/main.js"></script>
-    
-    </script>
   </body>
 </html>

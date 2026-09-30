@@ -92,7 +92,9 @@ router.get("/partners", (req, res) => {
 router.get("/login", (req, res) => {
   res.send(renderPage("login.html"));
 });
-
+router.get("/propose-project", (req, res) => {
+  res.send(renderPage("propose-project.html"));
+});
 router.get("/admin", (req, res) => {
   if (!req.session.admin) return res.redirect("/login");
   res.send(renderPage("admin.html"));

@@ -1,32 +1,44 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
 const requireAdmin = require("../middleware/requireAdmin");
-const upload = multer({ storage: multer.memoryStorage() });
+const upload = multer({ storage: multer.memoryStorage() }); 
 const Image = require("../models/Image");
 const sharp = require("sharp");
 
+const uploadsDir = path.join(__dirname, "..", "res", "uploads");
+fs.mkdirSync(uploadsDir, { recursive: true }); 
+
 router.post("/upload", requireAdmin, upload.single("img"), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: "Žádný soubor" });
- const resizedBuffer = await sharp(req.file.buffer)
-  .resize({ width: 1200, withoutEnlargement: true })
-  .webp({ quality: 80 })
-  .toBuffer();
+
+  const resizedBuffer = await sharp(req.file.buffer)
+    .resize({ width: 1200, withoutEnlargement: true })
+    .webp({ quality: 80 })
+    .toBuffer();
+
+  const filename = Date.now() + "-" + Math.round(Math.random() * 1e9) + ".webp";
+  fs.writeFileSync(path.join(uploadsDir, filename), resizedBuffer);
+
   const image = await Image.create({
-    data: resizedBuffer,
+    filename,
+    path: "uploads/" + filename,
     contentType: "image/webp",
   });
 
   const url = "/api/images/" + image._id;
   res.json({ url });
 });
+
+
 router.get("/:id", async (req, res) => {
   try {
     const image = await Image.findById(req.params.id);
     if (!image) return res.status(404).json({ error: "Obrázek nenalezen" });
 
-    res.set("Content-Type", image.contentType);
-    res.send(image.data);
+    res.sendFile(path.join(uploadsDir, image.filename));
   } catch (err) {
     res.status(500).json({ error: "Chyba serveru" });
   }
