@@ -583,7 +583,7 @@ a {
   margin: 0;
 }
 /*Contacts*/
-/* ===== Kontakty – layout ===== */
+
 .contacts {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
@@ -601,7 +601,6 @@ a {
   line-height: 1.2;
 }
 
-/* ===== Mapa ===== */
 .contacts-location {
   display: flex;
   flex-direction: column;
@@ -640,7 +639,7 @@ a {
   border-bottom-color: currentColor;
 }
 
-/* ===== Seznam kontaktů ===== */
+
 .contacts-list {
   display: flex;
   flex-direction: column;
@@ -668,7 +667,7 @@ a {
     box-shadow 0.2s ease;
 }
 
-/* hover jen u klikatelných karet (odkazy) */
+
 a.contact-card:hover,
 a.contact-card:focus-visible {
   background-color: var(--secondary-hover-color);

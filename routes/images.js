@@ -12,11 +12,13 @@ const uploadsDir = path.join(__dirname, "..", "res", "uploads");
 fs.mkdirSync(uploadsDir, { recursive: true }); 
 
 router.post("/upload", requireAdmin, upload.single("img"), async (req, res) => {
+  try {
   if (!req.file) return res.status(400).json({ error: "Žádný soubor" });
 
   const resizedBuffer = await sharp(req.file.buffer)
     .resize({ width: 1200, withoutEnlargement: true })
-    .webp({ quality: 80 })
+    .webp({ quality: 85 })
+    .autoOrient()
     .toBuffer();
 
   const filename = Date.now() + "-" + Math.round(Math.random() * 1e9) + ".webp";
@@ -29,7 +31,10 @@ router.post("/upload", requireAdmin, upload.single("img"), async (req, res) => {
   });
 
   const url = "/api/images/" + image._id;
-  res.json({ url });
+  res.json({ url });} catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Chyba serveru:" + err.message });
+  }
 });
 
 
@@ -40,7 +45,7 @@ router.get("/:id", async (req, res) => {
 
     res.sendFile(path.join(uploadsDir, image.filename));
   } catch (err) {
-    res.status(500).json({ error: "Chyba serveru" });
+    res.status(500).json({ error: "Chyba serveru" + err.message });
   }
 });
 
