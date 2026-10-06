@@ -8,7 +8,10 @@ router.post("/login", (req, res) => {
  
   const validUsername = process.env.ADMIN_USERNAME;
   const validPassword = process.env.ADMIN_PASSWORD;
- 
+  
+   if (!validUsername || !validPassword || !username || !password) {
+    return res.status(401).json({ success: false });
+  }
   if (username === validUsername && password === validPassword) {
     req.session.admin = true;
     res.json({ success: true });

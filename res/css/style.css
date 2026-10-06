@@ -1074,57 +1074,264 @@ a.contact-card:focus-visible {
 .cta-button:hover {
   background-color: var(--hover-color);
 }
-
-
+ 
+img {
+  max-width: 100%;
+}
 @media (max-width: 768px) {
-  :root{
-
-    --index-image-height: 50vw;
+  :root {
+    
+    
+    --fs-content: clamp(0.95rem, 3.8vw, 1.05rem);
+    --fs-navbar: clamp(0.75rem, 3.2vw, 1rem);
+    --fs-footer: clamp(0.75rem, 3.2vw, 1rem);
+    
+    --index-image-height: clamp(380px, 80vw, 480px);
   }
-   .contacts {
+ 
+
+  .hero-block {
+    padding: 3rem 0 2.5rem;
+  }
+ 
+  .hero-block h1 {
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
+    overflow-wrap: break-word;
+  }
+ 
+  .hero-block p {
+    margin-top: 1rem;
+    max-width: 100%;
+  }
+ 
+  /* Hero (úvodní stránka) */
+  .index-hero-content {
+    padding: 1.25rem;
+  }
+ 
+  .index-hero-title {
+    font-size: clamp(1.5rem, 6.5vw, 2.4rem);
+    margin-bottom: 1.2rem;
+    overflow-wrap: break-word;
+  }
+ 
+  .index-hero-title span {
+    -webkit-text-stroke-width: 1px;
+  }
+ 
+  .index-hero-buttons {
+    gap: 0.75rem;
+  }
+ 
+  .index-hero-btn {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  /* Aktuality */
+  #actualities {
+    margin: 3rem 0;
+  }
+ 
+  #actualities h1 {
+    margin-bottom: 2rem;
+    letter-spacing: 0.08em;
+  }
+ 
+  .article-card {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    align-items: start;
+  }
+ 
+  /* Detail článku */
+  .article-wrapper {
+    padding: 1.5rem 0 2rem;
+  }
+ 
+  .article-detail {
+    flex: 1 1 auto;
+  }
+ 
+  .article-detail h1,
+  .article-content {
+    overflow-wrap: anywhere;
+  }
+ 
+  .article-content {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+ 
+  .article-content img {
+    max-width: 100%;
+    height: auto;
+  }
+ 
+  
+  .article-button {
+    position: static;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    min-height: 44px;
+  }
+ 
+  /* O nás */
+  .about-wrapper {
     grid-template-columns: 1fr;
   }
-
+ 
+  .about-block,
+  .about-block:nth-child(even) {
+    padding: 2rem 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+ 
+  .about-block:last-child {
+    border-bottom: none;
+  }
+ 
+  /* Kontakty */
+  .contacts {
+    grid-template-columns: 1fr;
+    padding: 1rem 0;
+  }
+ 
   .map-frame,
   .map-frame iframe {
     min-height: 260px;
   }
-  .article-card {
-    grid-template-columns: 2fr;
+ 
+  .contact-card {
+    padding: 14px;
+    gap: 12px;
   }
+ 
+  /* Partneři */
   .partner-block {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+    padding: 2.5rem 0;
   }
-
-  .partner-block:nth-child(even) .partner-logo-side,
-  .partner-block:nth-child(even) .partner-info-side {
+ 
+  /* názvy tříd pokrývají obě varianty z původního CSS */
+  .partner-block:nth-child(even) .partner-logo-wrapper,
+  .partner-block:nth-child(even) .partner-info-wrapper,
+  .partner-block:nth-child(even) .partner-text-wrapper {
     order: unset;
   }
-  .about-wrapper{
-grid-template-columns: 1fr;
-
+ 
+  .partner-block:nth-child(even) .partner-logo-wrapper {
+    justify-content: flex-start;
   }
-  .partner-logo {
+ 
+  .partner-description {
     max-width: 100%;
   }
-  .about-block,
-  .about-block:nth-child(even) {
-    padding: 2.5rem 0;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  }
-
-  .about-block:last-child {
-    border-bottom: none;
-  } 
-.split-section {
+ 
+  /* Navrhnout projekt */
+  .split-section {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 3rem;
+    padding: 1rem 0 3rem;
+  }
+ 
+  .split-column h2 {
+    margin-bottom: 1.5rem;
+  }
+ 
+  .process-timeline {
+    gap: 1.75rem;
   }
  
   .cta-block {
-    padding: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+  }
+ 
+  .cta-block h2,
+  .cta-block p {
+    max-width: 100%;
+  }
+ 
+  .cta-button,
+  .back-button,
+  .admin-btn {
+    min-height: 44px;
+  }
+ 
+  /* Admin */
+  .admin-article-item {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem 0;
+  }
+ 
+  .admin-article-btns {
+    flex-wrap: wrap;
+  }
+ 
+  .admin-action-btn {
+    min-height: 40px;
+  }
+ 
+  .drop-zone {
+    padding: 1.25rem;
+  }
+ 
+  .admin-text-area {
+    min-height: 200px;
+  }
+}
+ 
+
+@media (max-width: 480px) {
+  .index-hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+ 
+  .program-item {
+    grid-template-columns: 4rem 1fr;
+    gap: 0.9rem;
+  }
+ 
+  .program-logo-box {
+    width: 4rem;
+    padding: 0.4rem;
+  }
+ 
+  .process-item {
+    grid-template-columns: 2.2rem 1fr;
+    gap: 0.9rem;
+  }
+ 
+  .process-number {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+ 
+  .process-timeline::before {
+    left: 1.1rem;
+  }
+}
+ 
+
+@media (hover: none) {
+  
+  .about-block img {
+    opacity: 1;
+    filter: none;
+  }
+ 
+  .partner-logo img {
+    opacity: 1;
   }
 }
 
