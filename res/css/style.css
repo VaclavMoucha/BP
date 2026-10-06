@@ -37,6 +37,7 @@ body,
   background: var(--background-color);
   color: var(--text-color);
   font-family: var(--font-family);
+  overscroll-behavior-y: none;
 }
 
 li::marker {
