@@ -45,7 +45,7 @@ router.get("/:id", async (req, res) => {
 
     res.sendFile(path.join(uploadsDir, image.filename));
   } catch (err) {
-    res.status(500).json({ error: "Chyba serveru" + err.message });
+    res.status(500).json({ error: "Chyba serveru"});
   }
 });
 

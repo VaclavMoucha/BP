@@ -1,0 +1,42 @@
+name: Deploy LBSE
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  deploy-stable:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy stable (main) to server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+            cd ~/BP
+            git pull origin main
+            npm install --omit=dev
+            pm2 restart lbse
+
+  deploy-dev:
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy dev to server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+            cd ~/BP-dev
+            git pull origin dev
+            npm install --omit=dev
+            pm2 restart lbse-dev
