@@ -1221,7 +1221,7 @@ img {
     padding: 2.5rem 0;
   }
  
-  /* názvy tříd pokrývají obě varianty z původního CSS */
+
   .partner-block:nth-child(even) .partner-logo-wrapper,
   .partner-block:nth-child(even) .partner-info-wrapper,
   .partner-block:nth-child(even) .partner-text-wrapper {
@@ -1236,7 +1236,7 @@ img {
     max-width: 100%;
   }
  
-  /* Navrhnout projekt */
+  
   .split-section {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -1290,7 +1290,38 @@ img {
     min-height: 200px;
   }
 }
- 
+/*Školení*/
+.training-content {
+  max-width: var(--page-size);
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--secondary-color);
+  border-radius: 14px;
+  border-top: 4px solid var(--primary-color);
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+.training-content h2 {
+  font-size: var(--fs-title);
+  color: var(--primary-color);
+  margin: 0 0 0.6rem;
+}
+
+.training-content h2:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.training-content p {
+  font-size: var(--fs-content);
+  line-height: 1.7;
+  color: var(--secondary-text-color);
+  margin: 0;
+}
+
+.training-content strong {
+  color: var(--text-color);
+}
 
 @media (max-width: 480px) {
   .index-hero-buttons {
