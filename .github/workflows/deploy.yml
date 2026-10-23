@@ -20,9 +20,10 @@ jobs:
           script: |
             set -e
             cd ~/BP
+            git reset --hard HEAD
             git pull origin main
-            npm install --omit=dev
-            pm2 restart lbse
+            npm ci --omit=dev
+            pm2 restart lbse --update-env
 
   deploy-dev:
     if: github.ref == 'refs/heads/dev'
@@ -37,6 +38,7 @@ jobs:
           script: |
             set -e
             cd ~/BP-dev
+            git reset --hard HEAD
             git pull origin dev
-            npm install --omit=dev
-            pm2 restart lbse-dev
+            npm ci --omit=dev
+            pm2 restart lbse-dev --update-env
