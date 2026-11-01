@@ -1,79 +1,59 @@
 <!doctype html>
 <html lang="cs" class="no-js">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LBSE</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="../css/header.css" />
-    <link rel="stylesheet" href="../css/footer.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" href="../img/favicon.png" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Noto+Sans+Mono:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="preloader">
-      <img src="../img/logo.svg" alt="Načítání LBSE" class="preloader-img" />
-    </div>
-    <div class="container">
-      <header id="header"></header>
-      <div class="page-wrapper">
-        <div class="main">
-          <div class="hero-block">
-            <h1>
-              <span data-en="Admin" data-cs="Admin">ADMIN</span><br />
-              <span class="highlight" data-en="LOGIN" data-cs="PŘIHLÁŠENÍ"
-                >PŘIHLÁŠENÍ</span
-              >
-            </h1>
-            <div class="login-form">
-              <div class="form-group">
-                <label>Jméno</label>
-                <input type="text" id="username" />
-              </div>
-              <div class="form-group">
-                <label>Heslo</label>
-                <input type="password" id="password" />
-              </div>
-              <p id="login-error" class="login-error"></p>
-              <button class="admin-btn" onclick="login()">Přihlásit</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LBSE</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" href="../img/favicon.png" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Noto+Sans+Mono:wght@100..900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <div class="preloader">
+    <img src="../img/logo.svg" alt="Načítání LBSE" class="preloader-img" />
+  </div>
+  <div class="container">
+    <header id="header"></header>
+    <div class="page-wrapper">
+      <div class="main">
+        <div class="hero-block">
+          <h1>
+            <span data-en="Admin" data-cs="Admin">ADMIN</span><br />
+            <span class="highlight" data-en="LOGIN" data-cs="PŘIHLÁŠENÍ">PŘIHLÁŠENÍ</span>
+          </h1>
+          <div class="login-form">
+            <div class="form-group">
+              <label>Jméno</label>
+              <input type="text" id="username" />
             </div>
+            <div class="form-group">
+              <label>Heslo</label>
+              <input type="password" id="password" />
+            </div>
+            <p id="login-error" class="login-error"></p>
+            <button class="admin-btn">Přihlásit</button>
           </div>
         </div>
       </div>
     </div>
-    <footer id="footer"></footer>
-    <script>
-      async function login() {
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
+  </div>
+  <footer id="footer"></footer>
+  <script src="/js/login.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="/js/header.js"></script>
+  <script src="/js/main.js"></script>
+  </script>
+</body>
 
-        const res = await fetch("/api/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password }),
-        });
-
-        const data = await res.json();
-        if (data.success) {
-          window.location.href = "/admin";
-        } else {
-          document.getElementById("login-error").textContent =
-            "Špatné jméno nebo heslo";
-        }
-      }
-    </script>
-    <script src="/js/articles.js"></script>
-    <script src="/js/header.js"></script>
-    <script src="/js/main.js"></script>
-    </script>
-  </body>
 </html>
