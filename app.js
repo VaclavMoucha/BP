@@ -26,7 +26,7 @@ const articlesRouter = require("./routes/articles");
 const authRouter = require("./routes/auth");
 const imagesRouter = require("./routes/images");
 const pagesRouter = require("./routes/pages");
-
+const isDev = process.env.NODE_ENV !== "production";
 const app = express();
 
 
@@ -43,8 +43,15 @@ app.use(
       useDefaults: true,
       directives: {
         "frame-src": ["'self'", "https://www.google.com"],
+<<<<<<< HEAD
       },
     },
+=======
+        "upgrade-insecure-requests": isDev ? null : [],
+      },
+    },
+    hsts: isDev ? false : undefined,
+>>>>>>> f0e741f97b2016281235d592742fc10834d2068e
   }),
 );
 
