@@ -43,15 +43,10 @@ app.use(
       useDefaults: true,
       directives: {
         "frame-src": ["'self'", "https://www.google.com"],
-<<<<<<< HEAD
-      },
-    },
-=======
         "upgrade-insecure-requests": isDev ? null : [],
       },
     },
     hsts: isDev ? false : undefined,
->>>>>>> f0e741f97b2016281235d592742fc10834d2068e
   }),
 );
 
