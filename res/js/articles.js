@@ -6,6 +6,26 @@ function formatDate(date) {
     getLang() === "cs" ? "cs-CZ" : "en-US",
   );
 }
+function shorten(text, max = 155) {
+  if (!text || text.length <= max) return text || "";
+  return text.slice(0, max - 1).replace(/\s+\S*$/, "") + "…";
+}
+
+function setMeta(title, description) {
+  const suffix =
+    getLang() === "cs"
+      ? "Laboratoř bateriových systémů a emobility"
+      : "Laboratory of Battery Systems and Emobility";
+  document.title = `${title} | ${suffix}`;
+
+  let meta = document.querySelector('meta[name="description"]');
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.name = "description";
+    document.head.appendChild(meta);
+  }
+  meta.content = description;
+}
 function renderBlocksClient(blocks, fallback) {
   if (blocks && blocks.length != 0) {
     return blocks
@@ -54,6 +74,7 @@ async function renderArticle(){
   if (!id || !/^[a-fA-F0-9]{24}$/.test(id)) return;
   try {
     const res = await fetch(`/api/articles/${id}`);
+    if (!res.ok) return;
     const article = await res.json();
     detail.innerHTML = `
     <h1 data-cs="${article.title_cs}" data-en="${article.title_en}">${article["title_" + lang]}</h1>
@@ -63,6 +84,7 @@ async function renderArticle(){
         ${renderBlocksClient(article["blocks_" + lang], article["content_" + lang])}
       </div>
     `;
+    setMeta(article["title_" + lang], shorten(article["perex_" + lang]));
   } catch (err) {
     console.warn("articles.js: fetch selhal", err);
   }

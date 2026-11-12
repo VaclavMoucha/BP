@@ -6,6 +6,11 @@ const dropzone = document.getElementById("main-drop-zone");
 const fileInput = document.getElementById("file-input");
 const preview = document.getElementById("preview");
 
+document.querySelectorAll("[data-add-block]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    addBlock(btn.dataset.lang, btn.dataset.type);
+  });
+});
 async function uploadFile(file) {
   const formData = new FormData();
   formData.append("img", file);
@@ -138,10 +143,10 @@ async function loadAdminArticles() {
     <div class="admin-article-item">
       <span data-cs="${article.title_cs}" data-en="${article.title_en}">${article.title_cs}</span>
       <span class="article-date">${formatDate(article.date)}</span>
-      <div class="admin-article-btns">
-        <button class="admin-action-btn" onclick="editArticle('${article._id}')" data-cs="Upravit" data-en="Edit">Upravit</button>
-        <button class="admin-action-btn" onclick="deleteArticle('${article._id}')" data-cs="Smazat" data-en="Delete">Smazat</button>
-      </div>
+     <div class="admin-article-btns">
+  <button class="admin-action-btn" data-action="edit" data-id="${article._id}" data-cs="Upravit" data-en="Edit">Upravit</button>
+  <button class="admin-action-btn" data-action="delete" data-id="${article._id}" data-cs="Smazat" data-en="Delete">Smazat</button>
+</div>
     </div>
   `,
       )
@@ -283,4 +288,13 @@ document
       console.error("Chyba při ukládání článku", err);
     }
   });
+
+document.getElementById("admin-article-list").addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-action]");
+  if (!btn) return;
+
+  if (btn.dataset.action === "edit") editArticle(btn.dataset.id);
+  if (btn.dataset.action === "delete") deleteArticle(btn.dataset.id);
+});
+
 loadAdminArticles();

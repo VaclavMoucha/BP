@@ -95,6 +95,10 @@ router.get("/login", (req, res) => {
 router.get("/propose-project", (req, res) => {
   res.send(renderPage("propose-project.html"));
 });
+router.get("/training", (req, res) => {
+  res.send(renderPage("training.html"));
+});
+
 router.get("/admin", (req, res) => {
   if (!req.session.admin) return res.redirect("/login");
   res.send(renderPage("admin.html"));
@@ -124,6 +128,13 @@ router.get("/article/:id", async (req, res) => {
   } catch (err) {
     res.status(500).send("Chyba serveru");
   }
+});
+router.get("/robots.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "../robots.txt"));
+});
+
+router.get("/sitemap.xml", (req, res) => {
+  res.sendFile(path.join(__dirname, "../sitemap.xml"));
 });
 router.use((req, res) => {
   res.status(404).send(renderPage("404.html"));
