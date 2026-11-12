@@ -129,6 +129,13 @@ router.get("/article/:id", async (req, res) => {
     res.status(500).send("Chyba serveru");
   }
 });
+router.get("/robots.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "../robots.txt"));
+});
+
+router.get("/sitemap.xml", (req, res) => {
+  res.sendFile(path.join(__dirname, "../sitemap.xml"));
+});
 router.use((req, res) => {
   res.status(404).send(renderPage("404.html"));
 });
