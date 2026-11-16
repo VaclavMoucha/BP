@@ -1,100 +1,168 @@
 <!doctype html>
 <html lang="cs" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Administrace | Laboratoř bateriových systémů a emobility</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" href="../img/favicon.png" />
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-ext-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/noto-sans-mono-latin-ext-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/noto-sans-mono-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex">
-  <title>Administrace | Laboratoř bateriových systémů a emobility</title>
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="icon" href="../img/favicon.png" />
-  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin-wght-normal.woff2" crossorigin />
-</head>
+  <body>
+    <div class="preloader">
+      <img src="../img/logo.svg" alt="Načítání LBSE" class="preloader-img" />
+    </div>
+    <header id="header"></header>
+    <div class="container">
+      <div class="page-wrapper">
+        <div class="main">
+          <div class="hero-block">
+            <h1>
+              <span data-en="ARTICLE" data-cs="SPRÁVA">SPRÁVA</span>
+              <span class="highlight" data-en="MANAGEMENT" data-cs="ČLÁNKŮ"
+                >ČLÁNKŮ</span
+              >
+            </h1>
+          </div>
 
-<body>
-  <div class="preloader">
-    <img src="../img/logo.svg" alt="Načítání LBSE" class="preloader-img" />
-  </div>
-  <header id="header"></header>
-  <div class="container">
-    <div class="page-wrapper">
-      <div class="main">
-        <div class="hero-block">
-          <h1>
-            <span data-en="ARTICLE" data-cs="SPRÁVA">SPRÁVA</span>
-            <span class="highlight" data-en="MANAGEMENT" data-cs="ČLÁNKŮ">ČLÁNKŮ</span>
-          </h1>
-        </div>
-
-        <div class="admin-panel">
-          <form id="article-form" class="article-form">
-            <div class="form-group">
-              <label data-en="Title (CS)" data-cs="Název (CS)">Název (CS)</label>
-              <input type="text" id="title_cs" required />
-            </div>
-            <div class="form-group">
-              <label data-en="Title (EN)" data-cs="Název (EN)">Název (EN)</label>
-              <input type="text" id="title_en" required />
-            </div>
-            <div class="form-group">
-              <label data-en="Short description (CS)" data-cs="Krátký popis (CS)">Krátký popis (CS)</label>
-              <textarea id="perex_cs" rows="3" required></textarea>
-            </div>
-            <div class="form-group">
-              <label data-en="Short description (EN)" data-cs="Krátký popis (EN)">Krátký popis (EN)</label>
-              <textarea id="perex_en" rows="3" required></textarea>
-            </div>
-            <div class="form-group">
-              <label data-en="Content (CS)" data-cs="Obsah (CS)">Obsah (CS)</label>
-              <div id="blocks-cs"></div>
-              <div class="block-buttons">
+          <div class="admin-panel">
+            <form id="article-form" class="article-form">
+              <div class="form-group">
+                <label data-en="Title (CS)" data-cs="Název (CS)"
+                  >Název (CS)</label
+                >
+                <input type="text" id="title_cs" required />
+              </div>
+              <div class="form-group">
+                <label data-en="Title (EN)" data-cs="Název (EN)"
+                  >Název (EN)</label
+                >
+                <input type="text" id="title_en" required />
+              </div>
+              <div class="form-group">
+                <label
+                  data-en="Short description (CS)"
+                  data-cs="Krátký popis (CS)"
+                  >Krátký popis (CS)</label
+                >
+                <textarea id="perex_cs" rows="3" required></textarea>
+              </div>
+              <div class="form-group">
+                <label
+                  data-en="Short description (EN)"
+                  data-cs="Krátký popis (EN)"
+                  >Krátký popis (EN)</label
+                >
+                <textarea id="perex_en" rows="3" required></textarea>
+              </div>
+              <div class="form-group">
+                <label data-en="Content (CS)" data-cs="Obsah (CS)"
+                  >Obsah (CS)</label
+                >
+                <div id="blocks-cs"></div>
                 <div class="block-buttons">
-                  <button type="button" data-add-block data-lang="cs" data-type="text">
-                    + Přidat text
-                  </button>
-                  <button type="button" data-add-block data-lang="cs" data-type="image">
-                    + Přidat obrázek
-                  </button>
+                  <div class="block-buttons">
+                    <button
+                      type="button"
+                      data-add-block
+                      data-lang="cs"
+                      data-type="text"
+                    >
+                      + Přidat text
+                    </button>
+                    <button
+                      type="button"
+                      data-add-block
+                      data-lang="cs"
+                      data-type="image"
+                    >
+                      + Přidat obrázek
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label data-en="Content (EN)" data-cs="Obsah (EN)">Obsah (EN)</label>
-              <div id="blocks-en"></div>
-              <div class="block-buttons">
+              <div class="form-group">
+                <label data-en="Content (EN)" data-cs="Obsah (EN)"
+                  >Obsah (EN)</label
+                >
+                <div id="blocks-en"></div>
                 <div class="block-buttons">
-                  <button type="button" data-add-block data-lang="en" data-type="text">
-                    + Přidat text
-                  </button>
-                  <button type="button" data-add-block data-lang="en" data-type="image">
-                    + Přidat obrázek
-                  </button>
+                  <div class="block-buttons">
+                    <button
+                      type="button"
+                      data-add-block
+                      data-lang="en"
+                      data-type="text"
+                    >
+                      + Přidat text
+                    </button>
+                    <button
+                      type="button"
+                      data-add-block
+                      data-lang="en"
+                      data-type="image"
+                    >
+                      + Přidat obrázek
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="drop-zone" id="main-drop-zone">
-              Přetáhni obrázek sem, nebo
-              <label for="file-input">vyber soubor</label>
-              <input type="file" id="file-input" accept="image/*" hidden />
-            </div>
-            <img id="preview" hidden />
-            <button type="submit" class="admin-btn" data-en="Add article" data-cs="Přidat článek">
-              Přidat článek
-            </button>
-          </form>
-          <h2 data-en="Existing articles" data-cs="Existující články">
-            Existující články
-          </h2>
-          <div id="admin-article-list"></div>
+              <div class="drop-zone" id="main-drop-zone">
+                Přetáhni obrázek sem, nebo
+                <label for="file-input">vyber soubor</label>
+                <input type="file" id="file-input" accept="image/*" hidden />
+              </div>
+              <img id="preview" hidden />
+              <button
+                type="submit"
+                class="admin-btn"
+                data-en="Add article"
+                data-cs="Přidat článek"
+              >
+                Přidat článek
+              </button>
+            </form>
+            <h2 data-en="Existing articles" data-cs="Existující články">
+              Existující články
+            </h2>
+            <div id="admin-article-list"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <footer id="footer"></footer>
-  <script src="/js/articles.js"></script>
-  <script src="/js/header.js"></script>
-  <script src="/js/admin.js"></script>
-  <script src="/js/main.js"></script>
-</body>
-
+    <footer id="footer"></footer>
+    <script src="/js/articles.js" defer></script>
+    <script src="/js/header.js" defer></script>
+    <script src="/js/admin.js" defer></script>
+    <script src="/js/main.js" defer></script>
+  </body>
 </html>
