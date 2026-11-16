@@ -26,6 +26,7 @@ const articlesRouter = require("./routes/articles");
 const authRouter = require("./routes/auth");
 const imagesRouter = require("./routes/images");
 const pagesRouter = require("./routes/pages");
+const compression = require('compression');
 const isDev = process.env.NODE_ENV !== "production";
 const app = express();
 
@@ -49,7 +50,7 @@ app.use(
     hsts: isDev ? false : undefined,
   }),
 );
-
+app.use(compression());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "res")));
 
